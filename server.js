@@ -5,6 +5,9 @@ var application_root = __dirname,
   path = require ('path'), // Utilities for dealind with file paths
   mongoose = require('mongoose'); // MongoDB integration
 
+// Config (for later)
+// var config = require( './config/config')();
+
 // Create server
 var app = express();
 
@@ -21,7 +24,7 @@ app.configure( function() {
   app.use( app.router );
 
   // Where to serve static content
-  app.use( express.static( path.join ( application_root, 'site' ) ) );
+  app.use( express.static( path.join ( application_root, '/site' ) ) );
 
   // Show all errors in development
   app.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -37,9 +40,9 @@ app.listen( port, function() {
 
 // Routes
 
-app.get( '/', function (request, response) {
-  response.send('On the home page');
-});
+/*
+  Note: do NOT use a get for the index.html page, just the api stuff
+*/
 
 app.get( '/api', function (request, response) {
   response.send( 'Our API is running' );
