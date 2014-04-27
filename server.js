@@ -67,6 +67,8 @@ var BeforeIDieModel = mongoose.model( 'BeforeIDie', BeforeIDie);
 app.get( '/api/befores', function (request, response) {
   return BeforeIDieModel.find( function ( err, beforeidie) {
     if ( !err) {
+      io.sockets.in( 'deathRoom' ).emit( beforeidie );
+      console.log(beforeidie);
       return response.send( beforeidie );
     } else {
       return console.log(err);
@@ -109,7 +111,9 @@ jQuery.post( '/api/befores', {
 
 // SOCKETS
 io.sockets.on('connection', function(socket) {
-  socket.emit('news', { hello: 'world'});
+  socket.join('deathRoom');
+
+  socket.emit('news', {hello: 'world'});
 
   socket.on('add', function (data) {
 
