@@ -3,7 +3,8 @@
 var application_root = __dirname,
   express = require('express'), // Web framework
   path = require ('path'), // Utilities for dealind with file paths
-  mongoose = require('mongoose'); // MongoDB integration
+  mongoose = require('mongoose'), // MongoDB integration
+  io = require('socket.io').listen(80);
 
 // Config (for later)
 // var config = require( './config/config')();
@@ -103,4 +104,12 @@ jQuery.post( '/api/befores', {
     console.dir( jqXHR );
 });
 */ 
+
+// SOCKETS
+io.sockets.on('connection', function(socket) {
+  socket.emit('news', { hello: 'world'});
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
 
