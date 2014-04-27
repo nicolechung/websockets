@@ -97,7 +97,7 @@ app.post ( '/api/befores', function ( request, response ) {
 /* 
 * TO TEST (in console in Chrome)
 *
-jQuery.post( '/api/befores', {
+jQuery.post( '/api/befores', { 
     'todo': 'JavaScript the good parts',
     'createDate': new Date( 2014, 4, 27 ).getTime(),
     'modifiedDate': new Date( 2014, 4, 27 ).getTime(),
@@ -112,8 +112,12 @@ jQuery.post( '/api/befores', {
 // SOCKETS
 io.sockets.on('connection', function(socket) {
   socket.join('deathRoom');
+  
+  BeforeIDieModel.find({}, function(err, data) {
+    socket.emit('news', {collection: data});
+  }); 
 
-  socket.emit('news', {hello: 'world'});
+  
 
   socket.on('add', function (data) {
 
@@ -122,6 +126,7 @@ io.sockets.on('connection', function(socket) {
       createDate: data.createDate,
       modifiedDate: data.modifiedDate
     });
+
 
     return goal.save( function ( err ) {
       if ( !err ) {
