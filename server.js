@@ -54,7 +54,8 @@ mongoose.connect('mongodb://localhost/workshop_database');
 // Schemas
 var BeforeIDie = new mongoose.Schema({
   todo: String,
-  createDate: Date
+  createDate: Date,
+  modifiedDate: Date
 });
 
 var BeforeIDieModel = mongoose.model( 'BeforeIDie', BeforeIDie);
@@ -69,3 +70,37 @@ app.get( '/api/befores', function (request, response) {
     }
   });
 });
+
+// Insert a new "before i die" todo
+app.post ( '/api/befores', function ( request, response ) {
+  var beforeidie = new BeforeIDieModel({
+    todo: request.body.todo,
+    createDate: request.body.createDate,
+    modifiedDate: request.body.modifiedDate
+  });
+
+  return beforeidie.save( function ( err ) {
+    if ( !err ) {
+      console.log( 'created' );
+      return response.send( beforeidie );
+    } else {
+      console.log( err );
+    }
+  });
+});
+
+/* 
+* TO TEST (in console in Chrome)
+*
+jQuery.post( '/api/befores', {
+    'todo': 'JavaScript the good parts',
+    'createDate': new Date( 2014, 4, 27 ).getTime(),
+    'modifiedDate': new Date( 2014, 4, 27 ).getTime(),
+}, function(data, textStatus, jqXHR) {
+    console.log( 'Post response:' );
+    console.dir( data );
+    console.log( textStatus );
+    console.dir( jqXHR );
+});
+*/ 
+
