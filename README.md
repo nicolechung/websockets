@@ -8,7 +8,6 @@ Does not use require.js
 In progress...
 
 #Todos
-1. socket.io
-2. write to db
-3. hook up to heroku
-4. set up datavis
+1. write socket to db
+2. hook up to heroku
+3. set up datavis
