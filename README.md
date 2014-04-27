@@ -8,6 +8,6 @@ Does not use require.js
 In progress...
 
 #Todos
-1. write socket to db
-2. hook up to heroku
-3. set up datavis
+1. hook up to heroku
+2. write pattern to sort out "most used" words and goals
+2. set up datavis with d3
