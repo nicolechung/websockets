@@ -8,7 +8,6 @@ socket.on('news', function (data) {
 function BeforeIDieCtrl($scope) {
   $scope.addBeforeTodo = function() {
     var todo = $scope.beforeIDieTxt;
-    console.log(todo);
 
     socket.emit('add', {
       todo: todo,

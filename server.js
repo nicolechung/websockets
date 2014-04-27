@@ -1,5 +1,4 @@
 // Module dependencies
-
 var application_root = __dirname,
   express = require('express'), // Web framework
   path = require ('path'), // Utilities for dealind with file paths
@@ -117,7 +116,6 @@ io.sockets.on('connection', function(socket) {
     socket.emit('news', {collection: data});
   }); 
 
-  
 
   socket.on('add', function (data) {
 
