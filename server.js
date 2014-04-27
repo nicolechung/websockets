@@ -53,3 +53,16 @@ var BeforeIDie = new mongoose.Schema({
   todo: String,
   createDate: Date
 });
+
+var BeforeIDieModel = mongoose.model( 'BeforeIDie', BeforeIDie);
+
+// Get a list of all before I die "todos"
+app.get('api/befores', function( request, reponse) {
+  return BookModel.find( function (err, befores) {
+    if ( !err ) {
+      return response.send( befores )
+    } else {
+      return console.log( err );
+    }
+  })
+})
