@@ -3,14 +3,16 @@
 var application_root = __dirname,
   express = require('express'), // Web framework
   path = require ('path'), // Utilities for dealind with file paths
-  mongoose = require('mongoose'), // MongoDB integration
-  io = require('socket.io').listen(80);
+  mongoose = require('mongoose'); // MongoDB integration
+ 
 
 // Config (for later)
 // var config = require( './config/config')();
 
 // Create server
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
 // Configure server
 app.configure( function() {
@@ -35,7 +37,7 @@ app.configure( function() {
 // Start server
 
 var port = 4711;
-app.listen( port, function() {
+server.listen( port, function() {
   console.log( 'Express server listening on port %d in %s mode', port, app.settings.env);
 });
 
