@@ -16,4 +16,4 @@ In progress...
 
 [Mongohub](http://mongohub.todayclose.com/)
 
-|[alt text]("https://raw.githubusercontent.com/nicolechung/websockets/master/site/img/mongohub.jpg")
+![how to set up localhost](https://raw.githubusercontent.com/nicolechung/websockets/master/site/img/mongohub.jpg)
