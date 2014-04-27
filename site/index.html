@@ -13,10 +13,13 @@
 <body>
   
   <label>Before I die...</label>
-  <div ng-controller="BeforeIDoCtrl">
-    <input type="text" ng-model="beforeIDie" placeholder="I would..." />
+  <div ng-controller="BeforeIDieCtrl">
+    <form ng-submit="addBeforeTodo()">
+      <input type="text" ng-model="beforeIDieTxt" placeholder="I would..." />
+      <input type="submit" value="tell me">
+    </form>
     <hr>
-    <h1> {{beforeIDie}} </h1>
+    <h1> {{beforeIDieTxt}} </h1>
   </div>
 </body>
 </html>
