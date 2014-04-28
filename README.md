@@ -17,3 +17,14 @@ In progress...
 [Mongohub](http://mongohub.todayclose.com/)
 
 ![how to set up localhost](https://raw.githubusercontent.com/nicolechung/websockets/master/site/img/mongohub.jpg)
+
+[Nodemon](http://nodemon.io/)
+
+```
+npm install -g nodemon
+```
+
+Usage:
+```
+nodemon server.js
+```

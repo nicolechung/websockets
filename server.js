@@ -66,9 +66,9 @@ var BeforeIDieModel = mongoose.model( 'BeforeIDie', BeforeIDie);
 app.get( '/api/befores', function (request, response) {
   return BeforeIDieModel.find( function ( err, beforeidie) {
     if ( !err) {
-      io.sockets.in( 'deathRoom' ).emit( beforeidie );
-      console.log(beforeidie);
-      return response.send( beforeidie );
+      io.sockets.in( 'deathRoom' ).emit( data );
+      console.log(data);
+      return response.send( data );
     } else {
       return console.log(err);
     }
@@ -93,20 +93,6 @@ app.post ( '/api/befores', function ( request, response ) {
   });
 });
 
-/* 
-* TO TEST (in console in Chrome)
-*
-jQuery.post( '/api/befores', { 
-    'todo': 'JavaScript the good parts',
-    'createDate': new Date( 2014, 4, 27 ).getTime(),
-    'modifiedDate': new Date( 2014, 4, 27 ).getTime(),
-}, function(data, textStatus, jqXHR) {
-    console.log( 'Post response:' );
-    console.dir( data );
-    console.log( textStatus );
-    console.dir( jqXHR );
-});
-*/ 
 
 // SOCKETS
 io.sockets.on('connection', function(socket) {
